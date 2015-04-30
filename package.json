@@ -1,0 +1,30 @@
+{
+  "name": "playground",
+  "version": "0.1.0",
+  "description": "Aplikacja dla MEAN stack skonfigurowana do uruchamiania na platformie Openshift",
+  "main": "server/app.js",
+  "scripts": {
+    "start": "node ./server/app.js"
+  },
+  "author": "Bartosz Staniszewski",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/bstaniszewski/playground.git"
+  },
+  "license": " ",
+  "dependencies": {
+    "express": "^4.12.3",
+    "lodash": "^3.7.0",
+    "path": "^0.11.14"
+  },
+  "devDependencies": {
+    "grunt": "~0.4.4",
+    "grunt-contrib-clean": "~0.5.0",
+    "grunt-contrib-copy": "~0.5.0",
+    "grunt-build-control": "DaftMonk/grunt-build-control",
+    "jit-grunt": "^0.5.0"
+  },
+  "engines": {
+    "node": ">=0.12.2"
+  }
+}
