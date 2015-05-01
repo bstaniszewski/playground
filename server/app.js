@@ -32,7 +32,7 @@ app
 
 // Uruchom serwer
 server.listen(config.port, config.hostname, function () {
-    console.log('Serwer pod adresem ' + config.hostname + ':' + config.port + ' , środowisko w trybie ' + app.get('env'));
+    console.log('Serwer pod adresem ' + config.hostname + ':' + config.port + ', środowisko w trybie ' + app.get('env'));
 });
 
 // Opublikuj aplikację
