@@ -1,6 +1,6 @@
 {
   "name": "playground",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "Aplikacja dla MEAN stack skonfigurowana do uruchamiania na platformie Openshift",
   "main": "server/app.js",
   "scripts": {
@@ -15,7 +15,8 @@
   "dependencies": {
     "express": "^4.12.3",
     "lodash": "^3.7.0",
-    "path": "^0.11.14"
+    "path": "^0.11.14",
+    "winston": "^1.0.0"
   },
   "devDependencies": {
     "grunt": "~0.4.4",

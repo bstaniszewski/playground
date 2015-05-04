@@ -1,21 +1,31 @@
 /**
  * Konfiguracja aplikacji Express - Patrz: http://expressjs.com/api.html
- * Dodana (prymitywna) obsługa logowania żądań na konsoli
+ * Usunięta (prymitywna) obsługa logowania żądań na konsoli
+ * Dodana obsługa logowania za pomocą loggera Winston
  */
 
 'use strict';
 
+// Obsługa logowania
+var winston             = require('winston');
+
 module.exports = function(app, config) {
     var env = app.get('env');
 
-    // Middleware loggera żądań, które zostanie wpięte w pipeline obsługi żądań    
-    var logger = function(req, res, next) {
-        console.log("reg.url:  " + req.url);
+    // Inicjalizacja loggera
+    var logger      = require('../utils/logger')(config);
+    
+    // Zapamiętanie referencji do loggera
+    app.set('logger', logger);
+    
+    // Podłączenie middleware loggera żądań w oparciu o logger na Winstonie, które zostanie wpięte w pipeline obsługi żądań   
+    var reqLogger = function(req, res, next) {
+        logger.info("req.url " + req.url);
         next(); // Przekazanie żądania do następnego handlera na stosie
     };
-
+    
     // Wpięcie middleware loggera
-    app.use(logger);
-
-    console.log("Konfigurujemy express dla środowiska wykonawczego w trybie: " + env);
+    app.use(reqLogger);
+    
+    logger.debug("Konfiguracja express dla środowiska wykonawczego w trybie: " + env);
 };

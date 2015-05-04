@@ -9,8 +9,6 @@ var _           = require('lodash');
 function prepareConfig(env) {
     var mergedConf = {};
     
-    console.log("Przygotowanie konfiguracji aplikacji dla środowiska wykonawczego w trybie: " + env);
-    
     try {
         var envConf =  require('./' + env + '.js');
         mergedConf = _.merge(
@@ -27,16 +25,19 @@ function prepareConfig(env) {
 
 // Bazowa konfiguracja, która zostanie rozszerzona i/lub przykryta przez konfigurację dla środowiska wykonawczego
 var baseConf = {
-    env: process.env.NODE_ENV,
+    env:        process.env.NODE_ENV,
 
     // Ścieżka do roota serwera
-    root: path.normalize(__dirname + '/../../..'), 
+    root:       path.normalize(__dirname + '/../../..'), 
     
     // Domyślna nazwa hosta
-    hostname: 'localhost',
+    hostname:   'localhost',
     
     // Domyślny port
-    port: process.env.PORT || 9000
+    port:       process.env.PORT || 9000,
+    
+    // Plik logu
+    logPath:    './logs/log.log'
 };
 
 // Opublikuj konfigurację zależną od środowiska wykonawczego
