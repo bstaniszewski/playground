@@ -10,53 +10,51 @@ Aplikacja na MEAN stack przygotowana do uruchomienia produkcyjnego na platformie
 * [Node.js] - w wersji >=0.12.2
 * [Git]
 
-### Instalacja
+### Aktualizacja stosu dla bieÅ¼Ä…cej wersji
 
-1. Odpal konsolê.
-2. Utwórz i przejdŸ do folderu, do którego chcesz sklonowaæ projekt.
-3. Wykonaj:
-```sh
-$ git init 
-$ git clone https://github.com/bstaniszewski/playground.git
-$ npm install
-$ npm start
-```
-4. Konfiguracja Openshifta to zupe³nie inna historia, któr¹ opiszê póŸniej gdy sam bêdê pewien, ¿e wiem ju¿ odpowiednio du¿o
+1. Zaktualizuj aplikacjÄ™:
+    * odpal konsolÄ™
+    * przejdÅº do folderu z projektem
+    ```sh
+    $ git pull origin master
+    $ npm install
+    $ npm start
+    ```
+    
+### Z czego korzystaÅ‚em
 
-### Z czego korzysta³em
-
-1. Do za³o¿enia projektu:
-    1. Do za³o¿enia projektu skorzysta³em z generatora dla Angulara na MEAN Stack. Generator ma wbudowan¹ funkcjê inicjalizacji projektu na Openshifta, z którego ostatecznie nie skorzysta³em ale zajrza³em do kodu i u¿y³em go do rêcznej inicjalizacji Openshifta. Niewiele zosta³o z wygenerowanego projektu ale pos³u¿y³o jako baza do dalszej konfiguracji. Dlaczego wyrzuci³em znaczn¹ czêœæ wytworów generatora? W celach edukacyjnych i dla pe³nej kontroli, chcê wprowadziæ "zasadê zrób to sam!": https://github.com/DaftMonk/generator-angular-fullstack
-    2. Ciekaw¹ alternatyw¹ s¹ pakiety instalacyjne z biblioteki openshifta: https://hub.openshift.com/quickstarts/languages/javascript
-    3. Wykorzysta³em https://hub.openshift.com/quickstarts/128-node-js-0-12, z którego wyci¹gn¹³em jak uruchomiæ na Openshift node w wersji 0.12.2 (domyœlnie jest 0.10.24)
+1. Do zaÅ‚oÅ¼enia projektu:
+    1. Do zaÅ‚oÅ¼enia projektu skorzystaÅ‚em z generatora dla Angulara na MEAN Stack. Generator ma wbudowanÄ… funkcjÄ™ inicjalizacji projektu na Openshifta, z ktÃ³rego ostatecznie nie skorzystaÅ‚em ale zajrzaÅ‚em do kodu i uÅ¼yÅ‚em go do rÄ™cznej inicjalizacji Openshifta. Niewiele zostaÅ‚o z wygenerowanego projektu ale posÅ‚uÅ¼yÅ‚o jako baza do dalszej konfiguracji. Dlaczego wyrzuciÅ‚em znacznÄ… czÄ™Å›Ä‡ wytworÃ³w generatora? W celach edukacyjnych i dla peÅ‚nej kontroli, chcÄ™ wprowadziÄ‡ "zasadÄ™ zrÃ³b to sam!": https://github.com/DaftMonk/generator-angular-fullstack
+    2. CiekawÄ… alternatywÄ… sÄ… pakiety instalacyjne z biblioteki openshifta: https://hub.openshift.com/quickstarts/languages/javascript
+    3. WykorzystaÅ‚em https://hub.openshift.com/quickstarts/128-node-js-0-12, z ktÃ³rego wyciÄ…gnÄ…Å‚em jak uruchomiÄ‡ na Openshift node w wersji 0.12.2 (domyÅ›lnie jest 0.10.24)
 
 2. Do rozpoznania zagadnienia logowania:
-    1. Post o tym jak korzystaæ z Winstona: http://tostring.it/2014/06/23/advanced-logging-with-nodejs/
+    1. Post o tym jak korzystaÄ‡ z Winstona: http://tostring.it/2014/06/23/advanced-logging-with-nodejs/
     2. Alternatywne opcje:
         * Morgan
-        * Bunyan - porównanie Winstona i Bunyana: https://strongloop.com/strongblog/compare-node-js-logging-winston-bunyan/
+        * Bunyan - porÃ³wnanie Winstona i Bunyana: https://strongloop.com/strongblog/compare-node-js-logging-winston-bunyan/
         * Do rozpoznania: log4js, log4javascript
         
-3. Do rozpoznania zagadnienia obs³ugi b³êdów:
-    1. Obs³uga b³êdów w Express - http://expressjs.com/guide/error-handling.html
-    2. Niez³y wprowadzenie do obs³ugi b³edów wraz z przyk³adami: Mastering Web Application Development with Express - 2014 Packt Publishing, Rozdzia³ 6. - https://github.com/alessioalex/mastering_express_code/blob/master/chapter06/
-    3. Jak prawid³owo zg³aszaæ b³êdy: http://derickbailey.com/2014/09/06/proper-error-handling-in-expressjs-route-handlers/
-    4. Obs³uga b³êdów na Node.js - https://www.joyent.com/developers/node/design/errors
-    
+3. Do rozpoznania zagadnienia obsÅ‚ugi bÅ‚Ä™dÃ³w:
+    1. ObsÅ‚uga bÅ‚Ä™dÃ³w w Express - http://expressjs.com/guide/error-handling.html
+    2. NiezÅ‚y wprowadzenie do obsÅ‚ugi bÅ‚edÃ³w wraz z przykÅ‚adami: Mastering Web Application Development with Express - 2014 Packt Publishing, RozdziaÅ‚ 6. - https://github.com/alessioalex/mastering_express_code/blob/master/chapter06/
+    3. Jak prawidÅ‚owo zgÅ‚aszaÄ‡ bÅ‚Ä™dy: http://derickbailey.com/2014/09/06/proper-error-handling-in-expressjs-route-handlers/
+    4. ObsÅ‚uga bÅ‚Ä™dÃ³w na Node.js - https://www.joyent.com/developers/node/design/errors
+
 ### TODO
-1. DONE - Pod³¹czyæ logowanie dla wersji deweloperskiej i testowej
-2. Pod³¹czyc logowanie dla wersji produkcyjnej (i rozpracowaæ temat logów na openshifta)
-3. Dodaæ zadania Grunta do inicjalizacji projektu na Openshifta, zrobi³em to rêcznie:
-```sh
-git init
-rhc app show DEPLOYED_APP_NAME --noprompt
-rhc app create DEPLOYED_APP_NAME nodejs-0.10 --noprompt --no-git NODE_ENV=production
-git remote add openshift DIST_REPO_URL
-git add -A && git commit -m "Commit inicjalny"
-git push -f openshift master
-rhc app restart -a DEPLOYED_APP_NAME
-```
-4. Dopracowaæ komunikaty o b³êdach - patrz handleErrors
+1. DONE - PodÅ‚Ä…czyÄ‡ logowanie dla wersji deweloperskiej i testowej
+2. PodÅ‚Ä…czyc logowanie dla wersji produkcyjnej (i rozpracowaÄ‡ temat logÃ³w na openshifta)
+3. DodaÄ‡ zadania Grunta do inicjalizacji projektu na Openshifta, zrobiÅ‚em to rÄ™cznie:
+    ```sh
+    git init
+    rhc app show DEPLOYED_APP_NAME --noprompt
+    rhc app create DEPLOYED_APP_NAME nodejs-0.10 --noprompt --no-git NODE_ENV=production
+    git remote add openshift DIST_REPO_URL
+    git add -A && git commit -m "Commit inicjalny"
+    git push -f openshift master
+    rhc app restart -a DEPLOYED_APP_NAME
+    ```
+4. DopracowaÄ‡ komunikaty o bÅ‚Ä™dach - patrz handleErrors
 
 [git]:http://git-scm.com/
 [node.js]:http://nodejs.org
