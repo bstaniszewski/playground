@@ -9,7 +9,8 @@
 // Wymuszenie inicjalizacji zmiennej określającej środowisko uruchomieniowe. Domyślnie ustawiane na develoment
 process.env.NODE_ENV = process.env.NODE_ENV || 'development';
 
-var express             = require('express');
+var express             = require('express'),
+    mongoose            = require('mongoose');  // Biblioteka do modelowania dokumentów i interakcji z MongoDB
 
 // Załaduj konfigurację zależną od środowiska wykonawczego
 var config              = require('./config/enviroment');
@@ -17,6 +18,9 @@ var config              = require('./config/enviroment');
 // Utwórz aplikację i serwer ...
 var app = express();
 var server = require('http').createServer(app);
+
+// Podłącz do bazy danych
+mongoose.connect(config.mongo.uri, config.mongo.options);
 
 // ... skonfiguruj aplikację. Patrz http://expressjs.com/api.html
 require('./config/express')(app, config);
@@ -44,9 +48,16 @@ app
     .route('/blad')
         .get(
             function(req, res, next) {
-                notExistingFunction(); // Nie istniejąca funkcja - wywołanie spowoduje błąd!
+                notExistingFunction(); // Nieistniejąca funkcja - wywołanie spowoduje błąd!
             }
         );
+
+/**
+ * Ścieżki API
+ * - do ścieżek z prefixem '/api' dodaje routing zdefiniowany w modułach
+ * - na początek tylko dokumenty ale w przyszłości także inne zasoby ...
+ */
+app.use('/api', require('./routes/documents'));
 
 /*  --------------------------------------------------------------------------------------------
     Routing - END

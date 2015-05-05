@@ -37,7 +37,14 @@ var baseConf = {
     port:       process.env.PORT || 9000,
     
     // Plik logu
-    logPath:    './logs/log.log'
+    logPath:    './logs/log.log',
+    
+    // Konfiguracja MongoDB
+    mongo:      {
+                    uri: 'mongodb://localhost/playground-dev'
+                },
+
+    seedDB:     false
 };
 
 // Opublikuj konfigurację zależną od środowiska wykonawczego

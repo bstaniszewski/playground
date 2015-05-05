@@ -46,13 +46,13 @@ Aplikacja na MEAN stack przygotowana do uruchomienia produkcyjnego na platformie
 2. Podłączyc logowanie dla wersji produkcyjnej (i rozpracować temat logów na openshifta)
 3. Dodać zadania Grunta do inicjalizacji projektu na Openshifta, zrobiłem to ręcznie:
     ```sh
-    git init
-    rhc app show DEPLOYED_APP_NAME --noprompt
-    rhc app create DEPLOYED_APP_NAME nodejs-0.10 --noprompt --no-git NODE_ENV=production
-    git remote add openshift DIST_REPO_URL
-    git add -A && git commit -m "Commit inicjalny"
-    git push -f openshift master
-    rhc app restart -a DEPLOYED_APP_NAME
+    $ git init
+    $ rhc app show DEPLOYED_APP_NAME --noprompt
+    $ rhc app create DEPLOYED_APP_NAME nodejs-0.10 --noprompt --no-git NODE_ENV=production
+    $ git remote add openshift DIST_REPO_URL
+    $ git add -A && git commit -m "Commit inicjalny"
+    $ git push -f openshift master
+    $ rhc app restart -a DEPLOYED_APP_NAME
     ```
 4. Dopracować komunikaty o błędach - patrz handleErrors
 

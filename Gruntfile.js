@@ -36,7 +36,7 @@ module.exports = function (grunt) {
 
             // Kopia plików na potrzeby dystrybucji
             copy: {
-              dist: {
+                dist: {
                     files: [
                         {
                             expand: true,

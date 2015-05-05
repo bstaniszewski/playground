@@ -6,14 +6,14 @@
 
 'use strict';
 
-// Obsługa logowania
-var winston             = require('winston');
+var bodyParser          = require('body-parser');           // Middleware do przetwarzania danych przesłanych w żądaniach - https://github.com/expressjs/body-parser
+var winston             = require('winston');               // Obsługa logowania
 
 module.exports = function(app, config) {
     var env = app.get('env');
 
     // Inicjalizacja loggera
-    var logger      = require('../utils/logger')(config);
+    var logger          = require('../utils/logger')(config);
     
     // Zapamiętanie referencji do loggera
     app.set('logger', logger);
@@ -26,6 +26,10 @@ module.exports = function(app, config) {
     
     // Wpięcie middleware loggera
     app.use(reqLogger);
+    
+    // Wpięcie middleware do parsowania żądań
+    app.use(bodyParser.urlencoded({extended: false}));
+    app.use(bodyParser.json());
     
     logger.debug("Konfiguracja express dla środowiska wykonawczego w trybie: " + env);
 };
