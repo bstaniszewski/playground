@@ -3,16 +3,25 @@
 Aplikacja na MEAN stack przygotowana do uruchomienia produkcyjnego na platformie Openshift
 
 ### Wersja
-0.2.0
+0.3.0
 
 ### Wymaga
 
 * [Node.js] - w wersji >=0.12.2
 * [Git]
+* [mongoDB] 
 
 ### Aktualizacja stosu dla bieżącej wersji
 
-1. Zaktualizuj aplikację:
+1. Zainstaluj [mongoDB] 
+2. Zainstaluj (Opcjonalnie) narzędzia: [Postman 2.0], [Umongo] - patrz sekcja Narzędzia
+3. Uruchom [mongoDB] - dla Windows wykonaj:
+    * odpal konsolę
+    * przejdź do folderu: ../MongoDB/bin/
+    ```sh
+    $ mongod.exe --dbpath "c:\mongodb\data"
+    ```
+4. Zaktualizuj aplikację:
     * odpal konsolę
     * przejdź do folderu z projektem
     ```sh
@@ -20,7 +29,12 @@ Aplikacja na MEAN stack przygotowana do uruchomienia produkcyjnego na platformie
     $ npm install
     $ npm start
     ```
-    
+
+### Narzędzia:
+
+1. Testowane API za pomocą przeglądarki - [Postman 2.0] - Plugin dla Google Chrome (oczywiście można użyć zamiast niego CURL'a)
+2. Klient MongoDB - Umongo - Na początek wystarczy ... nie miałem czasu znaleźć lepszego narzędzia.
+
 ### Z czego korzystałem
 
 1. Do założenia projektu:
@@ -41,20 +55,33 @@ Aplikacja na MEAN stack przygotowana do uruchomienia produkcyjnego na platformie
     3. Jak prawidłowo zgłaszać błędy: http://derickbailey.com/2014/09/06/proper-error-handling-in-expressjs-route-handlers/
     4. Obsługa błędów na Node.js - https://www.joyent.com/developers/node/design/errors
 
+4. Do wystawienia API:
+    1. Jak organizować routing:
+        * Dokumentacja express http://expressjs.com/4x/api.html#router
+        * Mastering Web Application Development with Express - 2014 Packt Publishing, Rozdział 3. - https://github.com/alessioalex/mastering_express_code/blob/master/chapter03/
+
+5. Do odpalenia MongoDB i Mongoose:
+    1. Web Development with Node and Express - 2014 Packt Publishing, Rozdział 13. - https://github.com/EthanRBrown/web-development-with-node-and-express
+    
 ### TODO
 1. DONE - Podłączyć logowanie dla wersji deweloperskiej i testowej
 2. Podłączyc logowanie dla wersji produkcyjnej (i rozpracować temat logów na openshifta)
 3. Dodać zadania Grunta do inicjalizacji projektu na Openshifta, zrobiłem to ręcznie:
     ```sh
-    $ git init
-    $ rhc app show DEPLOYED_APP_NAME --noprompt
-    $ rhc app create DEPLOYED_APP_NAME nodejs-0.10 --noprompt --no-git NODE_ENV=production
-    $ git remote add openshift DIST_REPO_URL
-    $ git add -A && git commit -m "Commit inicjalny"
-    $ git push -f openshift master
-    $ rhc app restart -a DEPLOYED_APP_NAME
+    git init
+    rhc app show DEPLOYED_APP_NAME --noprompt
+    rhc app create DEPLOYED_APP_NAME nodejs-0.10 --noprompt --no-git NODE_ENV=production
+    git remote add openshift DIST_REPO_URL
+    git add -A && git commit -m "Commit inicjalny"
+    git push -f openshift master
+    rhc app restart -a DEPLOYED_APP_NAME
     ```
 4. Dopracować komunikaty o błędach - patrz handleErrors
+5. Wpuścić obsługę błędów w API do rurociągu obsługi błędów
+6. Uzupełnić/zaimplementowac dodatkowe metody API Dokument
 
 [git]:http://git-scm.com/
 [node.js]:http://nodejs.org
+[mongoDB]:https://www.mongodb.org/
+[Postman 2.0]:https://chrome.google.com/webstore/detail/postman-rest-client-packa/fhbjgbiflinjbdggehcddcbncdddomop
+[Umongo]:http://edgytech.com/umongo/
