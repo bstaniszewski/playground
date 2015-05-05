@@ -7,6 +7,8 @@
 'use strict';
 
 var bodyParser          = require('body-parser');           // Middleware do przetwarzania danych przesłanych w żądaniach - https://github.com/expressjs/body-parser
+var express             = require('express');
+var path                = require('path');
 var winston             = require('winston');               // Obsługa logowania
 
 module.exports = function(app, config) {
@@ -30,6 +32,13 @@ module.exports = function(app, config) {
     // Wpięcie middleware do parsowania żądań
     app.use(bodyParser.urlencoded({extended: false}));
     app.use(bodyParser.json());
+    
+    if (env == 'production') {
+        // app.set('appPath', config.root + '/public');
+    } else {
+        app.use(express.static(path.join(config.root, '.tmp')));
+        app.use(express.static(path.join(config.root, 'client')));
+    };    
     
     logger.debug("Konfiguracja express dla środowiska wykonawczego w trybie: " + env);
 };

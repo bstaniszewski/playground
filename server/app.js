@@ -54,10 +54,22 @@ app
 
 /**
  * Ścieżki API
+ * 
  * - do ścieżek z prefixem '/api' dodaje routing zdefiniowany w modułach
  * - na początek tylko dokumenty ale w przyszłości także inne zasoby ...
  */
 app.use('/api', require('./routes/documents'));
+
+/**
+ * Dostęp do klienta
+ */
+app
+    .route('/*')
+        .get(
+            function(req, res, next) {
+                res.sendFile(app.get('appPath') + '/index.html');
+            }
+        );
 
 /*  --------------------------------------------------------------------------------------------
     Routing - END

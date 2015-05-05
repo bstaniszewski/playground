@@ -3,7 +3,10 @@
 Aplikacja na MEAN stack przygotowana do uruchomienia produkcyjnego na platformie Openshift
 
 ### Wersja
-0.3.0
+0.4.0
+
+### Co nowego?
+-  pojawił się klient, na razie w postaci odłączonej od wszystkiego prostej strony html dostępnej pod adresem http://localhost:9000
 
 ### Wymaga
 
@@ -13,15 +16,7 @@ Aplikacja na MEAN stack przygotowana do uruchomienia produkcyjnego na platformie
 
 ### Aktualizacja stosu dla bieżącej wersji
 
-1. Zainstaluj [mongoDB] 
-2. Zainstaluj (Opcjonalnie) narzędzia: [Postman 2.0], [Umongo] - patrz sekcja Narzędzia
-3. Uruchom [mongoDB] - dla Windows wykonaj:
-    * odpal konsolę
-    * przejdź do folderu: ../MongoDB/bin/
-    ```sh
-    $ mongod.exe --dbpath "c:\mongodb\data"
-    ```
-4. Zaktualizuj aplikację:
+1. Zaktualizuj aplikację:
     * odpal konsolę
     * przejdź do folderu z projektem
     ```sh
