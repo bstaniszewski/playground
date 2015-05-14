@@ -59,61 +59,61 @@ Aplikacja na MEAN stack przygotowana do uruchomienia produkcyjnego na platformie
     1. Web Development with Node and Express - 2014 Packt Publishing, Rozdział 13. - https://github.com/EthanRBrown/web-development-with-node-and-express
     
 6. Do obsługi uwierzytelniania:
-	A. Uwierzytelnianie użytkownika:
-		1. Przebieg
+	1. Uwierzytelnianie użytkownika:
+		1. Przebieg:
 			1. Użytkownik za pomocą formularza wprowadza komplet danych uwierzytelniających: identyfikator i hasło;
 			2. Aplikacja klienta wywołuje usługę uwierzytelniania przekazując do niej wprowadzone przez użytkownika dane uwierzytelnijące;
 			3. Usługa weryfikuje dane i w przypadku:
-				a) udanego uwierzytelnienia: 
+				1. udanego uwierzytelnienia: 
 					* pobiera profil użytkownika;
 					* wydaje i podpisuje token (JWT) o określonym okresie ważności, zawierający profil użytkownika;
 					* odsyła w odpowiedzi podpisany token;
-				b) nieudanego uwierzytelnienia:
+				2. nieudanego uwierzytelnienia:
 					* odsyła komunikat o błędzie uwierzytelniania;
 			4. Aplikacja klienta odbiera odpowiedź i w przypadku:
-				a) udanego uwierzytelniania:
+				1. udanego uwierzytelniania:
 					* zapamiętuje token, 
 					* dekoduje token i pobiera profil użytkownika;
 					* zapamiętuje profil użytkownika;
 					* przekierowuje do zabezpieczonej części aplikacji;
-				b) nieudanego uwierzytelniania:
+				2. nieudanego uwierzytelniania:
 					* przekierowuje do strony logowania;
 					* wyświetla informację o błędzie uwierzytelniania;
-        2. Realizacja 
+        2. Realizacja: 
             1. Po stronie serwera - usługa uwierzytelniania:
-                a) Wykorzystuję:	
+                1. Wykorzystuję:	
                     * PassportJS - middleware do uwierzytelniania  - http://passportjs.org/guide/username-password/ 
                     * Passport-local-mongoose - plugin dla Mongoose umożliwiający rozszerzenie dokumentu o aspekt obsługi uwierzytelniania, zawiera moduł ze strategią uwierzytelniania za pomocą nazwy użytkownika i hasła - https://github.com/saintedlama/passport-local-mongoose
                     * Jsonwebtoken - moduł do obsługi JWT - https://github.com/auth0/node-jsonwebtoken
-                b) Do rozpoznania korzystałem ze:
+                2. Do rozpoznania korzystałem ze:
                     * http://jwt.io/
                     * https://developer.atlassian.com/static/connect/docs/latest/concepts/understanding-jwt.html
                     * https://auth0.com/docs/jwt					
             2. Po stronie klienta - do uwierzytelnienia:
-                a) Formularz logowania użytkownika - identyfikator i hasło wysyłane do usługi uwierzytelniania (http.post(...))
-                b) Do rozpoznania korzystałem ze:
+                1. Formularz logowania użytkownika - identyfikator i hasło wysyłane do usługi uwierzytelniania (http.post(...))
+                2. Do rozpoznania korzystałem ze:
                     * https://thinkster.io/angularjs-jwt-auth/
                     * https://github.com/auth0/angularjs-jwt-authentication-tutorial
-    B. Uwierzytelnianie wywołań API:
-        1.Przebieg
+    1. Uwierzytelnianie wywołań API:
+        1.Przebieg:
             1. Aplikacja klienta wywołuje API
             2. Wywołanie przechodzi przez httpinterceptor, który dodaje nagłówek z tokenem uwierzyteniającym pozyskanym w A
             3. Żądanie trafia do serwera, przechodzi przez middleware uwierzytelniania i w przypadku:
-                a) udanego uwierzytelnienia jest przepuszczane dalej;
-				b) nieudanego uwierzytelnienia - odrzucane z komunikatem o błędzie uwierzytelnienia.
-        2. Realizacja 
+                1. udanego uwierzytelnienia jest przepuszczane dalej;
+				2. nieudanego uwierzytelnienia - odrzucane z komunikatem o błędzie uwierzytelnienia.
+        2. Realizacja: 
             1. Po stronie serwera - usługa uwierzytelniania:
-                a) Wykorzystuję:	
+                1. Wykorzystuję:	
                     * PassportJS - middleware do uwierzytelniania  - http://passportjs.org/guide/username-password/ 
                     * Passport-http-bearer - plugin obsługujący uwierzytelnianie za pomocą tokena - https://github.com/jaredhanson/passport-http-bearer
                     * Jsonwebtoken - moduł do obsługi JWT - https://github.com/auth0/node-jsonwebtoken
-                b) Do rozpoznania korzystałem ze:
+                2. Do rozpoznania korzystałem ze:
                     * http://jwt.io/
                     * https://developer.atlassian.com/static/connect/docs/latest/concepts/understanding-jwt.html
                     * https://auth0.com/docs/jwt					
             2. Po stronie klienta - do uwierzytelnienia:
-                a) httpinterceptor dołączający nagłówek z tokenem, zwrócony przez usługę uwierzytelniania.
-                b) zdarzenia zmiany stanu ui-routera i parametry przypisane do stanów (zabezpieczony/otwarty).
+                1. httpinterceptor dołączający nagłówek z tokenem, zwrócony przez usługę uwierzytelniania.
+                2. zdarzenia zmiany stanu ui-routera i parametry przypisane do stanów (zabezpieczony/otwarty).
 ### TODO
 1. DONE - Podłączyć logowanie dla wersji deweloperskiej i testowej
 2. Podłączyc logowanie dla wersji produkcyjnej (i rozpracować temat logów na openshifta)
