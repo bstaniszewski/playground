@@ -3,7 +3,7 @@
 Aplikacja na MEAN stack przygotowana do uruchomienia produkcyjnego na platformie Openshift
 
 ### Wersja
-0.4.0
+0.5.0
 
 ### Co nowego?
 -  pojawił się klient, na razie w postaci odłączonej od wszystkiego prostej strony html dostępnej pod adresem http://localhost:9000
@@ -114,6 +114,7 @@ Aplikacja na MEAN stack przygotowana do uruchomienia produkcyjnego na platformie
             2. Po stronie klienta - do uwierzytelnienia:
                 1. httpinterceptor dołączający nagłówek z tokenem, zwrócony przez usługę uwierzytelniania.
                 2. zdarzenia zmiany stanu ui-routera i parametry przypisane do stanów (zabezpieczony/otwarty).
+
 ### TODO
 1. DONE - Podłączyć logowanie dla wersji deweloperskiej i testowej
 2. Podłączyc logowanie dla wersji produkcyjnej (i rozpracować temat logów na openshifta)
