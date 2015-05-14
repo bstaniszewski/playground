@@ -44,7 +44,14 @@ var baseConf = {
                     uri: 'mongodb://localhost/playground-dev'
                 },
 
-    seedDB:     false
+    seedDB:     true,
+    
+    api:        {
+                    jwt:  {
+                        expiresInMinutes:   10,
+                        secretKey:          'siałababamak'
+                    }
+                } 
 };
 
 // Opublikuj konfigurację zależną od środowiska wykonawczego

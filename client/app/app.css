@@ -1,0 +1,72 @@
+
+
+#pg-app-error {
+    background-color: rgba(255, 255, 255, 0.7);
+    bottom: 0;
+    left: 0;
+    position: fixed;
+    right: 0;
+    text-align: center;
+    top: 0;
+}
+
+#pg-app-error
+    p {
+        background-color: red;
+        color: white;
+        margin: 0;
+        padding: 1rem;
+    }
+    
+.pg-read-me {
+    border-top: 1px solid gray;
+    margin-top: 3rem;
+    padding: 1rem 0;
+}
+
+.pg-form-row {
+    clear: left;
+    padding: 0.5rem;
+}
+
+.pg-form-row
+    label {
+        float: left;
+        padding: 0.2rem 1rem 0.2rem 0.2rem;
+        text-align: right;
+        width: 15rem;    
+    }
+    
+.pg-form-row
+    label:after {
+        content: ":";
+    }
+
+.pg-form-row
+    input {
+        float: left;
+        padding: 0.2rem;
+    }
+
+.pg-form-error {
+    background-color: red;
+}
+
+.pg-form-error
+    h3 {
+        font-style: normal;
+        margin: 0;
+        padding: 0;
+    }
+    
+.pg-form-actions
+    *:first-child {
+        margin-left: 16.2rem;
+    }
+    
+.pg-form-actions
+    button {
+        margin-right: 1rem; 
+        min-width: 6rem;
+        padding: 0.2rem;
+    }

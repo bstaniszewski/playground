@@ -10,7 +10,8 @@
 process.env.NODE_ENV = process.env.NODE_ENV || 'development';
 
 var express             = require('express'),
-    mongoose            = require('mongoose');  // Biblioteka do modelowania dokumentów i interakcji z MongoDB
+    mongoose            = require('mongoose'),  // Biblioteka do modelowania dokumentów i interakcji z MongoDB
+    passport            = require('passport');
 
 // Załaduj konfigurację zależną od środowiska wykonawczego
 var config              = require('./config/enviroment');
@@ -24,6 +25,9 @@ mongoose.connect(config.mongo.uri, config.mongo.options);
 
 // ... skonfiguruj aplikację. Patrz http://expressjs.com/api.html
 require('./config/express')(app, config);
+
+// ... skonfiguruj middleware uwierzytelniania.
+require('./config/passport')(app, config);
 
 var logger = app.get('logger');
 
@@ -54,11 +58,12 @@ app
 
 /**
  * Ścieżki API
- * 
- * - do ścieżek z prefixem '/api' dodaje routing zdefiniowany w modułach
- * - na początek tylko dokumenty ale w przyszłości także inne zasoby ...
  */
-app.use('/api', require('./routes/documents'));
+app.use('/api', require('./api/auth.routes'));
+app.use('/api', require('./api/user.routes'));
+app.use('/api', require('./api/document.routes'));
+
+app.use('/api', require('./utils/dberror'));
 
 /**
  * Dostęp do klienta
@@ -67,6 +72,8 @@ app
     .route('/*')
         .get(
             function(req, res, next) {
+                console.log(app.get('appPath'));
+                
                 res.sendFile(app.get('appPath') + '/index.html');
             }
         );
@@ -80,6 +87,11 @@ app
  * Otóż tu i teraz bo powinno być podłączone PO skonfigurowaniu routingu.
  */
 require('./config/handleErrors')(app, config);
+
+// Populate DB with sample data
+if(config.seedDB) {
+    require('./config/seed');
+};
 
 // Uruchom serwer
 server.listen(config.port, config.hostname, function () {

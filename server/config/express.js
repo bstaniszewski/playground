@@ -11,6 +11,12 @@ var express             = require('express');
 var path                = require('path');
 var winston             = require('winston');               // Obsługa logowania
 
+
+var passport            = require('passport');
+var BearerStrategy      = require('passport-http-bearer');
+//var LocalStrategy       = require('passport-local').Strategy;
+var authHelper              = require('../utils/authhelper');
+
 module.exports = function(app, config) {
     var env = app.get('env');
 
@@ -33,9 +39,41 @@ module.exports = function(app, config) {
     app.use(bodyParser.urlencoded({extended: false}));
     app.use(bodyParser.json());
     
+    // Configure passport middleware
+    app.use(passport.initialize());
+    
+    // Configure passport-local to use account model for authentication
+    var User = require('../models/user.model');
+    passport.use(User.createStrategy());
+    passport.use(
+        new BearerStrategy(
+            function(token, cb) {
+                authHelper.verifyToken(
+                    token,
+                    function(err, decodedToken) {
+                        console.log(decodedToken.username);
+                        
+                        
+                        if(err) {
+                            cb(err, null, {});
+                        }
+                        
+                        return cb(null, {});
+                    }
+                );
+            }
+        )
+    );
+    
+    //passport.serializeUser(User.serializeUser());
+    //passport.deserializeUser(User.deserializeUser());
+    
+    
     if (env == 'production') {
         // app.set('appPath', config.root + '/public');
     } else {
+        app.set('appPath', config.root + '/client');
+        
         app.use(express.static(path.join(config.root, '.tmp')));
         app.use(express.static(path.join(config.root, 'client')));
     };    

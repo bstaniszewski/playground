@@ -1,0 +1,59 @@
+<!-- <div ng-include="'components/navbar/navbar.html'"></div> -->
+
+<h1>Zaloguj się (domyślnie - u: test h: test)</h1>
+<form class="pg-form" name="form" ng-submit="login(form)" novalidate>
+    <div
+        class="pg-form-row pg-form-error"
+        ng-show="(!form.$valid && submitted) || error"
+    >
+        <div ng-show="!form.$valid && submitted">
+            <h3>Sprawdź wprowadzone dane</h3>
+            <ul>
+                <li ng-show="form.username.$error.required">Wprowadź identyfikator użytkownika</li>
+                <li ng-show="form.password.$error.required">Wprowadź hasło</li>
+            </ul>
+        </div>
+        
+        <div ng-show="error">
+            <h3>{{error.message}}</h3>
+            <ul ng-show="error.errors.length > 0">
+                <li ng-repeat="err in error.errors">{{err.message}}</li>
+            </ul>
+        </div>
+    </div>
+    
+    <div class="pg-form-row">
+        <label for="username">Identyfikator użytkownika</label>
+
+        <input
+            type="text"
+            name="username"
+            class="form-control"
+            ng-model="user.username"
+            required>
+    </div>
+    
+    <div class="pg-form-row">
+        <label>Hasło</label>
+
+        <input
+            type="password"
+            name="password"
+            class="form-control"
+            ng-model="user.password"
+            required>
+    </div>
+
+    <div class="pg-form-row pg-form-actions">
+        <button type="submit">
+            Wyślij
+        </button>
+        <a href="/signup">
+            Zarejestruj się
+        </a>
+    </div>
+</form>
+
+<p class="pg-read-me">
+    Otwarta część aplikacji - widok logowania. Zaloguj się jako użytkownik testowy test:test lub załóż nowego użytkownika w widoku <a href="/signup">rejestracji</a>.
+</p>

@@ -1,0 +1,10 @@
+<h1>Część aplikacji dostępna po zalogowaniu</h1>
+<a href="" ng-click="logout()">Logout</a>
+
+<h3>Lista dokumentów</h3>
+<ul>
+    <li ng-repeat="doc in docs">{{doc.name}}</li>
+</ul>
+<p class="pg-read-me">
+    Zabezpieczona (dostępna po zalogowaniu) część aplikacji. Zawiera wgląd do listy dokumentów ładowanych za pośrednictwem zabezpieczonego API, które jest wywoływane z tokenem uwierzytelniającym.
+</p>

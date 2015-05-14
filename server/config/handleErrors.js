@@ -45,16 +45,12 @@ module.exports = function(app, config) {
     -------------------------------------------------------------------------------------------*/
 
             res
-                .status(500) // 500 Internal Server Error
+                .status(err.status)
                 .send(
                     {
-                        errors: [
-                            {
-                                name: err.name,
-                                message: err.message,
-                                status: err.status
-                            }
-                        ]
+                        name: err.name,
+                        message: err.message,
+                        status: err.status
                     }
                 );
             
